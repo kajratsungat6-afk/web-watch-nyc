@@ -1,75 +1,162 @@
-/* ========== 1. ПАЛИТРА ========== */
 :root {
   --red: #d7263d;
   --navy: #1b1f3b;
-  --black: #111111;
   --cream: #fff4d6;
   --yellow: #ffd23f;
 }
 
-/* ========== 2. ОБЩИЙ ФОН И ТЕКСТ ========== */
 body {
   font-family: "Inter", sans-serif;
-  color: var(--black);
   background-color: var(--cream);
-  /* полутоновые точки, как в старых комиксах */
-  background-image: radial-gradient(circle, rgba(215, 38, 61, 0.18) 1.5px, transparent 1.5px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(circle, rgba(215, 38, 61, 0.2) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
 }
 
-/* ========== 3. ЗАГОЛОВКИ ========== */
-h1, h2, h3 {
+h1, h2, h3, .navbar-brand {
   font-family: "Bangers", cursive;
-  font-weight: 400;          /* у Bangers только один вес, иначе Bootstrap сделает его "жирным" искусственно */
-  letter-spacing: 2px;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
-h1 {
-  font-size: clamp(2.2rem, 6vw, 4rem);   /* размер сам подстраивается под экран */
-  text-shadow: 3px 3px 1px var(--red);
-}
+h1 { text-shadow: 3px 3px 0 var(--red); }
 
-/* ========== 4. NAVBAR (шапка) ========== */
 .navbar {
   background-color: var(--navy);
-  border-bottom: 4px solid var(--black);
-
-  /* Bootstrap 5.3 хранит цвета навбара в переменных, мы просто подменяем их */
-  --bs-navbar-brand-color: var(--yellow);
-  --bs-navbar-brand-hover-color: var(--red);
-  --bs-navbar-color: var(--cream);
-  --bs-navbar-hover-color: var(--yellow);
-  --bs-navbar-active-color: var(--yellow);
+  border-bottom: 4px solid black;
 }
+.navbar-brand { color: var(--yellow); font-size: 1.8rem; }
+.navbar .nav-link { color: var(--cream); }
+.navbar .nav-link.active { color: var(--yellow); }
+.navbar-toggler-icon { filter: invert(1); }
 
-.navbar-brand {
-  font-family: "Bangers", cursive;
-  font-size: 1.8rem;
-  letter-spacing: 2px;
-}
-
-.nav-link.active {
-  border-bottom: 3px solid var(--red);   /* подчёркивание текущей страницы */
-}
-
-.navbar-toggler {
-  border-color: var(--cream);
-}
-.navbar-toggler-icon {
-  filter: invert(1);   /* делает иконку-бургер светлой на тёмном фоне */
-}
-
-/* ========== 5. КОМИКС-ПАНЕЛЬ (будем использовать везде) ========== */
 .comic-panel {
-  background-color: #ffffff;
-  border: 3px solid var(--black);
-  border-radius: 0;
-  box-shadow: 6px 6px 0 var(--black);
+  background-color: white;
+  border: 3px solid black;
+  box-shadow: 6px 6px 0 black;
+  padding: 1.5rem;
 }
 
-/* ========== 6. FOOTER ========== */
-footer {
-  border-top: 4px solid var(--black);
-  font-size: 0.9rem;
-  margin-top: 3rem;
+.spot-card { transition: 0.2s; }
+.spot-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0 var(--red);
 }
+
+.btn-web {
+  background-color: var(--yellow);
+  border: 3px solid black;
+  border-radius: 0;
+  box-shadow: 4px 4px 0 black;
+  font-family: "Bangers", cursive;
+  font-size: 1.3rem;
+}
+.btn-web:hover { background-color: var(--red); color: white; }
+
+.table thead th { background-color: var(--navy); color: var(--yellow); }
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: var(--navy);
+  color: var(--cream);
+  text-align: center;
+}
+.stats div { flex: 1 1 150px; }
+.stats strong {
+  display: block;
+  font-family: "Bangers", cursive;
+  font-size: 2rem;
+  color: var(--yellow);
+}
+
+.bento {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .bento { grid-template-columns: 2fr 1fr; }
+  .bento-big { grid-row: span 2; }
+}
+
+.report-form {
+  background: linear-gradient(160deg, var(--yellow), var(--cream));
+}
+
+.typewriter {
+  font-family: "Special Elite", monospace;
+  font-size: 1.1rem;
+}
+
+.report-form fieldset {
+  border: 3px dashed black;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.report-form legend {
+  float: none;            /* Bootstrap растягивает legend, отменяем */
+  width: auto;
+  padding: 2px 14px;
+  background-color: var(--navy);
+  color: var(--yellow);
+  border: 3px solid black;
+  font-size: 1.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: var(--navy);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--red);
+  box-shadow: 3px 3px 0 var(--red);
+}
+
+.form-check-input:checked {
+  background-color: var(--red);
+  border-color: black;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;       
+}
+
+.thread {
+  position: absolute;     
+  top: 0;
+  right: 30px;
+  width: 2px;
+  height: 90px;
+  background-color: black;
+  transform-origin: top center;  
+  animation:
+    drop 1.5s ease-out,                         
+    swing 3s ease-in-out 1.5s infinite alternate;
+}
+
+.spider {
+  position: absolute;
+  bottom: -20px;          
+  left: -16px;
+  font-size: 1.6rem;
+}
+
+@keyframes drop {
+  from { height: 0; }
+  to   { height: 90px; }
+}
+
+@keyframes swing {
+  from { transform: rotate(-12deg); }
+  to   { transform: rotate(12deg); }
+}
+
+footer { border-top: 4px solid black; margin-top: 3rem; }
