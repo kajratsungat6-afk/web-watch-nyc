@@ -1,1 +1,75 @@
+/* ========== 1. ПАЛИТРА ========== */
+:root {
+  --red: #d7263d;
+  --navy: #1b1f3b;
+  --black: #111111;
+  --cream: #fff4d6;
+  --yellow: #ffd23f;
+}
 
+/* ========== 2. ОБЩИЙ ФОН И ТЕКСТ ========== */
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--black);
+  background-color: var(--cream);
+  /* полутоновые точки, как в старых комиксах */
+  background-image: radial-gradient(circle, rgba(215, 38, 61, 0.18) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+/* ========== 3. ЗАГОЛОВКИ ========== */
+h1, h2, h3 {
+  font-family: "Bangers", cursive;
+  font-weight: 400;          /* у Bangers только один вес, иначе Bootstrap сделает его "жирным" искусственно */
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 6vw, 4rem);   /* размер сам подстраивается под экран */
+  text-shadow: 3px 3px 1px var(--red);
+}
+
+/* ========== 4. NAVBAR (шапка) ========== */
+.navbar {
+  background-color: var(--navy);
+  border-bottom: 4px solid var(--black);
+
+  /* Bootstrap 5.3 хранит цвета навбара в переменных, мы просто подменяем их */
+  --bs-navbar-brand-color: var(--yellow);
+  --bs-navbar-brand-hover-color: var(--red);
+  --bs-navbar-color: var(--cream);
+  --bs-navbar-hover-color: var(--yellow);
+  --bs-navbar-active-color: var(--yellow);
+}
+
+.navbar-brand {
+  font-family: "Bangers", cursive;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+}
+
+.nav-link.active {
+  border-bottom: 3px solid var(--red);   /* подчёркивание текущей страницы */
+}
+
+.navbar-toggler {
+  border-color: var(--cream);
+}
+.navbar-toggler-icon {
+  filter: invert(1);   /* делает иконку-бургер светлой на тёмном фоне */
+}
+
+/* ========== 5. КОМИКС-ПАНЕЛЬ (будем использовать везде) ========== */
+.comic-panel {
+  background-color: #ffffff;
+  border: 3px solid var(--black);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 var(--black);
+}
+
+/* ========== 6. FOOTER ========== */
+footer {
+  border-top: 4px solid var(--black);
+  font-size: 0.9rem;
+  margin-top: 3rem;
+}
